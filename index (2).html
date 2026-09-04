@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Surprise For Bacheee ❤️</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--pink:#ff78b7;--purple:#9d7cff;--bg:#090612}
+html,body{height:100%;font-family:Arial,sans-serif;background:#090612;color:#fff;overflow:hidden}
+button{font:inherit}
+.scene{display:none;position:absolute;inset:0;min-height:100%;padding:28px;align-items:center;justify-content:center;text-align:center;overflow-y:auto}
+.scene.active{display:flex;animation:sceneIn .8s ease both}
+@keyframes sceneIn{from{opacity:0;transform:scale(1.06)}to{opacity:1;transform:scale(1)}}
+
+#sky{position:fixed;inset:0;pointer-events:none;overflow:hidden;background:
+radial-gradient(circle at 20% 20%,rgba(113,65,185,.22),transparent 24%),
+radial-gradient(circle at 80% 70%,rgba(255,74,153,.14),transparent 25%),
+linear-gradient(135deg,#080510,#120a24 55%,#07050e)}
+.star-bg{position:absolute;border-radius:50%;background:#fff;box-shadow:0 0 10px #fff;animation:twinkle 2.5s infinite alternate}
+@keyframes twinkle{to{opacity:.2;transform:scale(.55)}}
+
+.card{width:min(900px,94vw);padding:clamp(28px,5vw,60px);border:1px solid rgba(255,255,255,.14);border-radius:32px;background:rgba(255,255,255,.055);backdrop-filter:blur(16px);box-shadow:0 25px 90px rgba(0,0,0,.35)}
+.kicker{letter-spacing:5px;text-transform:uppercase;font-size:12px;color:#d8c6ff;margin-bottom:18px}
+h1{font-size:clamp(42px,9vw,96px);line-height:1.05}
+.gradient{background:linear-gradient(90deg,#fff,#ff9ecb,#c7b4ff,#fff);background-size:250%;-webkit-background-clip:text;color:transparent;animation:shine 5s linear infinite}
+@keyframes shine{to{background-position:250%}}
+.big-name{font-family:cursive;color:#ff87bd;text-shadow:0 0 18px #ff4fa0,0 0 50px rgba(255,79,160,.6);font-size:clamp(54px,11vw,125px);margin-top:10px;animation:pulse 1.8s infinite alternate}
+@keyframes pulse{to{transform:scale(1.05)}}
+p{font-size:clamp(16px,2.5vw,20px);line-height:1.75;color:#ece5fa;max-width:720px;margin:18px auto}
+.btn{border:0;border-radius:999px;padding:16px 28px;margin-top:22px;background:linear-gradient(135deg,#ff5da5,#9274ff);color:white;font-weight:700;cursor:pointer;box-shadow:0 12px 35px rgba(255,77,159,.3);transition:.25s}
+.btn:hover{transform:scale(1.06)}
+.btn:active{transform:scale(.96)}
+
+#flash{position:fixed;inset:0;background:#fff;opacity:0;pointer-events:none;z-index:50}
+.flash{animation:flash .6s ease}
+@keyframes flash{0%,100%{opacity:0}30%{opacity:.85}}
+
+.gift{font-size:clamp(95px,18vw,180px);cursor:pointer;filter:drop-shadow(0 0 30px rgba(255,104,181,.55));animation:shake 1.6s infinite}
+@keyframes shake{0%,100%{transform:rotate(-7deg) scale(1)}50%{transform:rotate(7deg) scale(1.08)}}
+
+.envelope{position:relative;width:min(330px,82vw);height:220px;background:linear-gradient(145deg,#ff87bd,#b878f7);margin:25px auto;border-radius:14px;cursor:pointer;box-shadow:0 20px 55px rgba(0,0,0,.35);overflow:hidden}
+.envelope:before{content:"";position:absolute;left:0;top:0;border-left:165px solid transparent;border-right:165px solid transparent;border-top:120px solid rgba(255,255,255,.18);transform-origin:top;transition:1s}
+.envelope.open:before{transform:rotateX(180deg)}
+.envelope .seal{position:absolute;left:50%;top:42%;transform:translate(-50%,-50%);font-size:45px;z-index:3}
+.envelope .paper{position:absolute;left:9%;right:9%;bottom:10%;height:75%;background:#fff8fc;color:#44213d;border-radius:8px;padding:18px;transition:1s;transform:translateY(30px);opacity:.2}
+.envelope.open .paper{transform:translateY(-70px);opacity:1}
+
+.letter{display:none;text-align:left;max-width:800px;margin:24px auto;padding:clamp(24px,5vw,50px);border-radius:28px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15)}
+.letter h2{font-family:cursive;font-size:42px;color:#ff9dca;margin-bottom:20px}
+.letter .signature{text-align:right;font-family:cursive;font-size:26px;color:#ff9dca;margin-top:20px}
+
+#starsGame{width:min(900px,95vw);height:min(600px,72vh);position:relative;border-radius:30px;background:radial-gradient(circle,rgba(82,49,133,.22),rgba(0,0,0,.1));border:1px solid rgba(255,255,255,.1);overflow:hidden}
+.tap-star{position:absolute;font-size:clamp(42px,7vw,72px);cursor:pointer;filter:drop-shadow(0 0 18px #fff2a8);transition:.35s;animation:float 2.5s ease-in-out infinite alternate}
+.tap-star:hover{transform:scale(1.25) rotate(15deg)}
+.tap-star.opened{opacity:.25;pointer-events:none;filter:grayscale(1)}
+@keyframes float{to{transform:translateY(-12px) rotate(8deg)}}
+.wishBox{min-height:115px;max-width:760px;margin:18px auto;padding:22px;border-radius:22px;background:rgba(255,126,184,.12);border:1px solid rgba(255,255,255,.14);font-size:clamp(17px,2.8vw,22px);line-height:1.5}
+.progress{font-size:14px;color:#d8c9f7;margin:15px}
+
+.reason{font-size:clamp(20px,4vw,35px);min-height:170px;display:flex;align-items:center;justify-content:center;padding:30px}
+.dots{margin-top:12px;color:#bba9db}
+
+.finalHeart{font-size:110px;animation:heartBeat 1.2s infinite}
+@keyframes heartBeat{50%{transform:scale(1.2)}}
+
+.confetti{position:fixed;z-index:100;pointer-events:none;animation:fall 3.5s linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(720deg);opacity:0}}
+</style>
+</head>
+<body>
+<div id="sky"></div><div id="flash"></div>
+
+<section class="scene active" id="s1">
+  <div class="card">
+    <div class="kicker">Someone made this just for you</div>
+    <p id="typeIntro"></p>
+    <h1 class="gradient">Happy Birthday</h1>
+    <div class="big-name">Bacheee ❤️</div>
+    <p>Today, I wanted to do something a little different... so don't rush. There are a few surprises waiting for you. ✨</p>
+    <button class="btn" onclick="go(2)">Begin The Surprise ✨</button>
+  </div>
+</section>
+
+<section class="scene" id="s2">
+  <div class="card">
+    <div class="kicker">First surprise...</div>
+    <p>Before you get your birthday greeting...</p>
+    <div class="gift" onclick="openGift()">🎁</div>
+    <p id="giftText">Tap the gift. I promise, it's not just a normal button 👀</p>
+  </div>
+</section>
+
+<section class="scene" id="s3">
+  <div class="card">
+    <div class="kicker">Happy Birthday, Bacheee 🎂</div>
+    <h1 class="gradient">A Special Day For<br>My Favourite Person ❤️</h1>
+    <p>You deserve to feel loved, appreciated and celebrated — not only today, but every single day. And this is just my small way of reminding you how special you are to me. 🥹❤️</p>
+    <button class="btn" onclick="go(4)">But Wait... 💌</button>
+  </div>
+</section>
+
+<section class="scene" id="s4">
+  <div class="card">
+    <div class="kicker">You have a letter...</div>
+    <p>Tap the envelope when you're ready. 💌</p>
+    <div class="envelope" id="envelope" onclick="openLetter()">
+      <div class="seal">❤️</div><div class="paper">A letter made especially for you...</div>
+    </div>
+    <div class="letter" id="letter">
+      <h2>My Dearest Bacheee, ❤️</h2>
+      <p>Happy Birthdayyy! 🎂❤️ Aaj ka din mere liye bhi bohot special hai, because today is the day when someone very special to me was born.</p>
+      <p><b>YAHAN APNA PERSONAL LETTER BAAD MEIN EDIT KAR SAKTA HAI.</b> Main bas itna chahta hu ki aap hamesha khush raho, hamesha smile karo, aur aapki life mein jitni bhi happiness hai wo sab aapko mile... aur usse bhi zyada. ❤️</p>
+      <p>Thank you for being exactly the way you are — your little moods, your cute moments, your talks, your foodie side, and all the things that make you different from everyone else.</p>
+      <p>One thing I always want you to know is: <b>You are important to me. Very important. ❤️</b></p>
+      <p>So today, eat all your favourite chatpata food 🌶️😭, smile as much as you can, and enjoy every single moment... because today is YOUR day. 👑✨</p>
+      <div class="signature">With lots and lots of love ❤️</div>
+      <button class="btn" onclick="go(5)">Don't Leave Yet... ⭐</button>
+    </div>
+  </div>
+</section>
+
+<section class="scene" id="s5">
+  <div class="card">
+    <div class="kicker">A hidden little game</div>
+    <h1 class="gradient">Tap The Stars ⭐</h1>
+    <p>There are 5 stars hiding 5 things I wish for you. Find them all. ✨</p>
+    <div id="starsGame"></div>
+    <div class="progress" id="progress">0 / 5 stars discovered</div>
+    <div class="wishBox" id="wishBox">Choose a glowing star... 👀⭐</div>
+    <button class="btn" id="afterStars" style="display:none" onclick="go(6)">One Last Surprise... 👀</button>
+  </div>
+</section>
+
+<section class="scene" id="s6">
+  <div class="card">
+    <div class="kicker">Okay... that wasn't everything.</div>
+    <h1 class="gradient">Because I Still Have Something To Tell You...</h1>
+    <div class="reason" id="reason">Tap below. Don't worry, I saved the best for the end. ❤️</div>
+    <div class="dots" id="dots">● ○ ○ ○</div>
+    <button class="btn" onclick="nextReason()">Reveal ✨</button>
+  </div>
+</section>
+
+<section class="scene" id="s7">
+  <div class="card">
+    <div class="finalHeart">❤️</div>
+    <div class="kicker">Before this ends...</div>
+    <h1 class="gradient">I just want you to remember one thing.</h1>
+    <p style="font-size:clamp(24px,5vw,45px);color:#ff9dca;font-weight:800">YOU ARE VERY SPECIAL TO ME. ❤️</p>
+    <p>Always keep smiling, being yourself, eating your favourite chatpata food 🌶️😭 and making the world a little cuter just by being in it.</p>
+    <h1 class="big-name" style="font-size:clamp(48px,8vw,90px)">Happy Birthday Bacheee 🎂❤️</h1>
+    <button class="btn" onclick="celebrate()">Make A Birthday Wish ✨</button>
+  </div>
+</section>
+
+<script>
+const sky=document.getElementById('sky');
+for(let i=0;i<95;i++){const s=document.createElement('i');s.className='star-bg';s.style.left=Math.random()*100+'%';s.style.top=Math.random()*100+'%';const z=1+Math.random()*4;s.style.width=z+'px';s.style.height=z+'px';s.style.animationDelay=Math.random()*3+'s';sky.appendChild(s)}
+
+const scenes=[...document.querySelectorAll('.scene')];
+function go(n){const flash=document.getElementById('flash');flash.classList.remove('flash');void flash.offsetWidth;flash.classList.add('flash');setTimeout(()=>{scenes.forEach(x=>x.classList.remove('active'));document.getElementById('s'+n).classList.add('active')},260)}
+
+const intro='Hey Bacheee... I have something for you. ❤️';
+let k=0;function type(){if(k<intro.length){document.getElementById('typeIntro').textContent+=intro[k++];setTimeout(type,55)}} type();
+
+function openGift(){document.getElementById('giftText').innerHTML='Surpriseee! 😭❤️ This whole little world is here only to make your birthday feel a little more special.';for(let i=0;i<70;i++)makeConfetti();setTimeout(()=>go(3),1800)}
+
+function openLetter(){document.getElementById('envelope').classList.add('open');setTimeout(()=>document.getElementById('letter').style.display='block',700)}
+
+const wishes=[
+'May your life always be full of happiness and peaceful moments. ❤️',
+'May all your dreams slowly find their way to you. ✨',
+'May you always get unlimited chatpata and tasty food whenever you crave it 😭🌶️❤️',
+'May your smile never lose its magic, no matter how difficult a day gets. 🥹',
+'And may you always know just how loved and special you truly are. ❤️'
+];
+const pos=[[14,18],[70,14],[40,45],[76,68],[18,72]];
+let found=0;
+const game=document.getElementById('starsGame');
+wishes.forEach((wish,i)=>{const st=document.createElement('div');st.className='tap-star';st.textContent='⭐';st.style.left=pos[i][0]+'%';st.style.top=pos[i][1]+'%';st.style.animationDelay=i*.3+'s';st.onclick=()=>{if(st.classList.contains('opened'))return;st.classList.add('opened');found++;document.getElementById('wishBox').textContent=wish;document.getElementById('progress').textContent=found+' / 5 stars discovered';for(let j=0;j<18;j++)makeConfetti('✨');if(found===5){document.getElementById('wishBox').innerHTML='You found them all. 🥹❤️ And there is still one last surprise waiting...';document.getElementById('afterStars').style.display='inline-block'}};game.appendChild(st)});
+
+const reasons=[
+'🌶️ You somehow make even food cravings sound like a full emergency mission 😭❤️',
+'😂 Your little moments and the way you are... they are simply very you.',
+'👑 You are one of a kind. There is genuinely nobody else exactly like you.',
+'❤️ And most importantly... you are someone very special to me.'
+];
+let r=-1;
+function nextReason(){r++;if(r<reasons.length){document.getElementById('reason').innerHTML=reasons[r];document.getElementById('dots').textContent=reasons.map((_,i)=>i===r?'●':'○').join(' ')}else go(7)}
+
+function makeConfetti(symbol){const c=document.createElement('div');c.className='confetti';c.textContent=symbol||['🎉','✨','💖','🎊','❤️'][Math.floor(Math.random()*5)];c.style.left=Math.random()*100+'vw';c.style.top='-30px';c.style.fontSize=(14+Math.random()*24)+'px';document.body.appendChild(c);setTimeout(()=>c.remove(),3700)}
+function celebrate(){for(let i=0;i<140;i++)makeConfetti();setTimeout(()=>alert('Make your wish, Bacheee... ✨❤️'),500)}
+</script>
+</body>
+</html>
